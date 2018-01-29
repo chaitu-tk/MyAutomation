@@ -14,11 +14,6 @@ myexec() {
     return $status
 }
 
-# Use step(), try(), and next() to perform a series of commands and print
-# [  OK  ] or [FAILED] at the end. The step as a whole fails if any individual
-# command fails.
-#
-
 ## Install Necessary packages
 myexec apt-get install -y vim
 myexec sudo apt-get install -y vim-gtk
