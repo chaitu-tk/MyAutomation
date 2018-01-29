@@ -1,4 +1,4 @@
 MyAutomation
 ============
 
-All scripts deeloped by me and are quite handy will be here.
+All scripts developed by me and are quite handy will be here.
