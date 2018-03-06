@@ -21,7 +21,7 @@ myexec sudo apt-get install -y exuberant-ctags
 myexec sudo apt-get install -y ack-grep
 myexec yes | sudo add-apt-repository ppa:danielrichter2007/grub-customizer
 myexec sudo apt-get update
-myexec eudo apt-get install grub-customizer
+myexec sudo apt-get install grub-customizer
 
 
 ##setup init files
