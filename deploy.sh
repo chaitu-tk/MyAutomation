@@ -15,15 +15,21 @@ myexec() {
 }
 
 ## Install Necessary packages
-myexec apt-get install -y vim
+myexec sudo apt-get install -y vim
 myexec sudo apt-get install -y vim-gtk
 myexec sudo apt-get install -y exuberant-ctags
+myexec sudo apt-get install -y cscope
 myexec sudo apt-get install -y ack-grep
+myexec sudo apt-get install -y git
+myexec sudo apt-get install -y openssh-server
+myexec sudo apt-get install -y vlc
+myexec sudo apt-get install -y wireshark
+
 myexec yes | sudo add-apt-repository ppa:danielrichter2007/grub-customizer
 myexec sudo apt-get update
 myexec sudo apt-get install grub-customizer
 
 
-##setup init files
+#setup init files
 ## configure vimrc
 ## configure alias-es in bashrc
