@@ -1,0 +1,31 @@
+---
+- hosts: localhost
+  name: Get Latest Stable Kernel Version
+  gather_facts: no
+  tasks:
+    - name: Get the page from kernel.org
+      uri:
+       url: https://www.kernel.org/releases.json
+       method: GET
+       return_content: yes
+       status_code: 200
+       body_format: json
+       validate_certs: no
+      register: data
+
+    - name: parse the stable version
+      set_fact:
+              linux_stable_version: "{{ data.json | json_query('releases[?moniker == `stable`].version') }}"
+
+    - name: parse the stable version
+      set_fact:
+              linux_stable_version_raw: "{{ item.version }}"
+      when: "{{ item.moniker == 'stable'}}"
+      loop: "{{ data.json.releases}}"
+
+    - debug:
+        var:
+          linux_stable_version
+    - debug:
+        var:
+          linux_stable_version_raw
