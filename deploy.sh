@@ -1,7 +1,7 @@
 #!/bin/bash
+set -eu
 ## for ubuntu
 #. /etc/init.d/functions
-#set -e 
 myexec() {
     tput init
     echo "Executing $@"
@@ -33,3 +33,24 @@ myexec sudo apt-get install grub-customizer
 #setup init files
 ## configure vimrc
 ## configure alias-es in bashrc
+cat > ~/.bashrc <<EOL
+alias sc='ack -i --cc --cpp'
+alias sci='ack --cc --cpp'
+alias sp='ack -i --py'
+alias spi='ack --py'
+alias rsync_ssh='rsync -avz -e "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --progress'
+alias sai='sudo apt install'
+alias sas='sudo apt search'
+alias pins='pip install --user'
+alias ide='ctags --sort=yes -R *; cscope -Rb'
+alias run_checkpatch='git show | /lib/modules/`uname -r`/build/scripts/checkpatch.pl --strict --no-tree --no-signoff'
+alias run_checkpatch_mn='git diff origin/master-bh2 | /lib/modules/`uname -r`/build/scripts/checkpatch.pl --strict --no-tree --no-signoff'
+alias show_nm_logs="cat /var/log/syslog | grep -i networkmanager"
+alias watch_nm_logs="tail -f /var/log/syslog | grep -i networkmanager"
+alias watch_dmesg="tail -f /var/log/kern.log"
+alias restart_nw="sudo service networking restart; sudo service network-manger restart"
+alias watch_syslog="tail -f /var/log/syslog"
+alias show_syslog="cat /var/log/syslog"
+alias show_pkgs="dpkg-query -W --showformat=\'${Installed-Size;10}\t${Package}\n\' | sort -k1,1n"
+alias myip='curl -4 https://ifconfig.co'
+EOL
